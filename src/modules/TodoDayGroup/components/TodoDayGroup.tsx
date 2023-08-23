@@ -5,6 +5,8 @@ import formatDateToString from "../../../utils/dateUtils"
 import {ToDoStateEnum} from "../../../enums/ToDoStateEnum"
 import {useAtom} from "jotai"
 import {todosAtom} from "../../../store/atoms/todosAtom"
+import TodoActionIcon from "../../../components/TodoActionIcon"
+import {twMerge} from "tailwind-merge"
 
 type Props = {
     todos: ITodo[],
@@ -17,11 +19,12 @@ export default function TodoDayGroup({todos, day, className}: Props) {
     const [globalTodos, setGlobalTodos] = useAtom(todosAtom)
 
     return(
-        <div className={"bg-neutral-100 w-2/12 h-1/2" + " " + className}>
-            <p className={"text-xl font-bold hover:cursor-pointer hover:bg-blue-200"}
+        <div className={twMerge("bg-neutral-100 w-1/12 h-1/2 min-w-[250px]", className)}>
+            <div className={"text-xl font-bold hover:cursor-pointer hover:bg-blue-200 group relative text-center p-2"}
                onClick={onTodoCreateClick}>
                 {day.toDateString()}
-            </p>
+                <TodoActionIcon iconName={"plus.svg"} className={"top-1.5 right-1.5 hover:bg-blue-200"}/>
+            </div>
             <Droppable id={formatDateToString(day.toISOString())}
                        className={"h-full"}>
                 {todos.map(todo => <Todo todo={todo}

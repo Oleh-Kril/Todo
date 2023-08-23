@@ -17,7 +17,7 @@ export default function TodoDndContext({children, ...props}: any) {
     )
 
     return(
-        <DndContext onDragEnd={onMovingTodoToAnotherDay} sensors={sensors}>
+        <DndContext onDragEnd={onMovingTodoToAnotherDay} sensors={sensors} {...props}>
             {children}
         </DndContext>
     )

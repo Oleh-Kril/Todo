@@ -6,9 +6,8 @@ import deleteTodoRequest from "../helpers/deleteTodoRequest"
 import {useState, useRef} from "react"
 import {useAtom} from "jotai"
 import {todosAtom} from "../../../store/atoms/todosAtom"
-import {useDraggable} from "@dnd-kit/core"
 import Draggable from "../../Draggable"
-import TodoActionIcon from "./TodoActionIcon"
+import TodoActionIcon from "../../TodoActionIcon"
 
 type Props = {
     todo: ITodo

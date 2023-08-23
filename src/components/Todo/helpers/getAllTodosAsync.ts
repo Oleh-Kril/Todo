@@ -1,10 +1,9 @@
 import ITodo from "../../../interfaces/ITodo"
-import axios from "axios"
-import {ToDoStateEnum} from "../../../enums/ToDoStateEnum"
+import extendedAxios from "../../../extendedAxios"
 
 export default async function getAllTodosAsync(): Promise<ITodo[] | null | undefined>{
     try {
-        const todosData = await axios.get("https://localhost:7151/Todo/all")
+        const todosData = await extendedAxios.get("/Todo/all")
         return todosData.data as ITodo[]
     }catch (error){
         console.error(error)
