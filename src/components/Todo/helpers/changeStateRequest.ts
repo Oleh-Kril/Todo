@@ -17,7 +17,7 @@ export default async function changeStateRequest(todo: ITodo){
 }
 
 function toggleState(state: ToDoStateEnum){
-    if (state == ToDoStateEnum.Done){
+    if (state === ToDoStateEnum.Done){
         state = ToDoStateEnum.Todo
     }else {
         state = ToDoStateEnum.Done

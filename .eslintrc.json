@@ -1,0 +1,113 @@
+{
+  "extends": "react-app",
+  "parserOptions": {
+    "sourceType": "module"
+  },
+
+  "plugins": [
+    "import",
+    "react"
+  ],
+
+  "rules": {
+    "import/no-internal-modules": [
+      "error",
+      {
+        "forbid": ["**/*/*/components/*.{tsx, ts}", "**/*.css"]
+      }
+    ],
+    "semi": ["error", "never"],
+    "indent": ["warn", 4]
+  },
+
+  "overrides": [
+    {
+      "files": [
+        "**/pages/*/components/*.{tsx, ts}"
+      ],
+      "rules": {
+        "import/no-internal-modules": [
+          "error",
+          {
+            "forbid": [
+              "src/ui/*/components/*.{tsx, ts}",
+              "src/modules/*/components/*.{tsx, ts}",
+              "src/components/*/components/*.{tsx, ts}",
+              "@/ui/*/components/*.{tsx, ts}",
+              "@/modules/*/components/*.{tsx, ts}",
+              "@/components/*/components/*.{tsx, ts}"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "files": [
+        "**/modules/*/components/*.{tsx, ts}"
+      ],
+      "rules": {
+        "import/no-internal-modules": [
+          "error",
+          {
+            "forbid": [
+              "src/ui/*/components/*.{tsx, ts}",
+              "src/components/*/components/*.{tsx, ts}",
+              "src/pages/**",
+              "@/ui/*/components/*.{tsx, ts}",
+              "@/components/*/components/*.{tsx, ts}",
+              "@/pages/**"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "files": [
+        "**/components/*/components/*.{tsx, ts}"
+      ],
+      "rules": {
+        "import/no-internal-modules": [
+          "error",
+          {
+            "forbid": [
+              "src/ui/*/components/*.{tsx, ts}",
+              "@/ui/*/components/*.{tsx, ts}",
+              "src/modules/**",
+              "@/modules/**",
+              "src/pages/**",
+              "@/pages/**"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "files": [
+        "**/ui/*/components/*.{tsx, ts}"
+      ],
+      "rules": {
+        "import/no-internal-modules": [
+          "error",
+          {
+            "forbid": [
+              "src/modules/**",
+              "@/modules/**",
+              "src/pages/**",
+              "@/pages/**",
+              "src/components/**",
+              "@/components/**"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "files": ["**/*/*/index.ts","**/*/*/index.tsx"],
+      "rules": {
+        "import/no-internal-modules": ["error", {
+          "allow": ["**"]
+          }]
+      }
+    }
+  ]
+}

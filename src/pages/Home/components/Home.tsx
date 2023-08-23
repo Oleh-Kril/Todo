@@ -1,5 +1,5 @@
 import ITodo from "../../../interfaces/ITodo"
-import {useEffect, useState} from "react"
+import {useEffect} from "react"
 import TodoDayGroup from "../../../modules/TodoDayGroup"
 import {useAtom} from "jotai"
 import {todosAtom} from "../../../store/atoms/todosAtom"
@@ -33,13 +33,12 @@ export default function Home() {
     return(
         <TodoDndContext>
                 <div className={"flex flex-wrap overflow-x-scroll gap-2 mt-12 h-screen w-auto justify-center"}>
-                    {initialTodoDayGroups.map((date: string, idx) => {
-                        console.log(date, todosGroupedByDate[date])
-                        return <TodoDayGroup key = {date}
-                                             className={idx === 0 ? "bg-neutral-200" : ""}
-                                             day = {new Date(date)}
-                                             todos = {todosGroupedByDate[date] || []}/>
-                    })}
+                    {initialTodoDayGroups.map((date: string, idx) => (
+                        <TodoDayGroup key = {date}
+                                      className={idx === 0 ? "bg-neutral-200" : ""}
+                                      day = {new Date(date)}
+                                      todos = {todosGroupedByDate[date] || []}/>
+                    ))}
                 </div>
         </TodoDndContext>
     )
