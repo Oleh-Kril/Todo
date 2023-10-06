@@ -14,7 +14,6 @@ type Props = {
 }
 
 export default function Todo({todo}: Props) {
-    // const [todoState, setTodoState] = useState(todo)
     const [todos, setTodos] = useAtom(todosAtom)
 
     const [isInEditState, setIsInEditState] = useState(false)

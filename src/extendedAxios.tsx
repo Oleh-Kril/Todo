@@ -18,7 +18,11 @@ function AxiosInterceptor(){
             }
             if (axiosError.response) {
                 const errorMessage = axiosError.response.data || 'An error occurred'
-                setError(errorMessage)
+                if(errorMessage.length > 100){
+                    setError(errorMessage.substring(0, 100) + "...")
+                }else{
+                    setError(errorMessage)
+                }
             }
             return Promise.reject(axiosError)
         }
